@@ -9,18 +9,9 @@ $(document).ready(function () {
     //create buttons for topics array
     $("#button-container").append("<button data-animals=" + topics[i] + ">" + topics[i] + "</buttons>");
     $("#button-container").append(" ");
-    console.log(i + ": " + topics[i]);
-
   }
-  console.log("original length " + topics.length);
-
-
   $("#addButton").on("click", function (e) { //adds a button that the user entered
     e.preventDefault();
-    console.log("here");
-
-
-
     var inputAdd = $("#add-Animal").val();
     var newlength = topics.length + 1;
     console.log("THIS will be the control length " + newlength);
@@ -31,32 +22,22 @@ $(document).ready(function () {
 
     if (originalLength < newlength) {
       addtoArray(inputAdd);
-      console.log(originalLength + " ---" + newlength);
     }
-
-
   });
 
   function addtoArray(addThis) {
-
-
     topics.push(addThis);
 
 
     $("#button-container").append("<button data-animals=" + topics[topics.length - 1] + ">" + topics[topics.length - 1] + "</buttons>");
     $("#button-container").append(" ");
     $("button").on("click", function (e) { //is triggered when any button is clicked on
-      console.log("hereeeeevs");
       e.preventDefault();
       $("#gifs-appear-here").empty();
       var animals = $(this).attr("data-animals");
 
       var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         animals + "&api_key=1viBFeiW20s1k3US55DWfQVWwuwkX1Du&limit=10";
-
-
-      console.log("here" + queryURL);
-
       if (animals != null) {
         $.ajax({
             url: queryURL,
@@ -65,7 +46,6 @@ $(document).ready(function () {
           .then(function (response) {
             $("#gifs-appear-here").empty();
             var results = response.data;
-            console.log(response.data);
 
             for (var i = 0; i < results.length; i++) {
               var gifDiv = $("<div>");
@@ -98,16 +78,12 @@ $(document).ready(function () {
 
 
   $("button").on("click", function (e) { //is triggered when any button is clicked on
-    console.log("hereeeeevs");
     e.preventDefault();
     $("#gifs-appear-here").empty();
     var animals = $(this).attr("data-animals");
 
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
       animals + "&api_key=1viBFeiW20s1k3US55DWfQVWwuwkX1Du&limit=10";
-
-
-    console.log("here" + queryURL);
 
     if (animals != null) {
       $.ajax({
