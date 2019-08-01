@@ -49,15 +49,15 @@ $(document).ready(function () {
       console.log("hereeeeevs");
       e.preventDefault();
       $("#gifs-appear-here").empty();
-      var person = $(this).attr("data-animals");
+      var animals = $(this).attr("data-animals");
 
       var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        person + "&api_key=1viBFeiW20s1k3US55DWfQVWwuwkX1Du&limit=10";
+        animals + "&api_key=1viBFeiW20s1k3US55DWfQVWwuwkX1Du&limit=10";
 
 
       console.log("here" + queryURL);
 
-      if (person != null) {
+      if (animals != null) {
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -74,17 +74,17 @@ $(document).ready(function () {
 
               var p = $("<p>").text("Rating: " + rating);
 
-              var personImage = $("<img>");
-              personImage.attr("src", results[i].images.fixed_height.url);
-              personImage.attr("data-still", results[i].images.fixed_height_still.url);
-              personImage.attr("data-animate", results[i].images.fixed_height.url);
+              var animalsImage = $("<img>" + "<br>");
+              animalsImage.attr("src", results[i].images.fixed_height.url);
+              animalsImage.attr("data-still", results[i].images.fixed_height_still.url);
+              animalsImage.attr("data-animate", results[i].images.fixed_height.url);
 
 
               gifDiv.prepend(p);
-              gifDiv.prepend(personImage);
+              gifDiv.prepend(animalsImage);
 
               $("#gifs-appear-here").prepend(gifDiv);
-              person = " ";
+              animals = " ";
             }
           });
 
@@ -101,15 +101,15 @@ $(document).ready(function () {
     console.log("hereeeeevs");
     e.preventDefault();
     $("#gifs-appear-here").empty();
-    var person = $(this).attr("data-animals");
+    var animals = $(this).attr("data-animals");
 
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-      person + "&api_key=1viBFeiW20s1k3US55DWfQVWwuwkX1Du&limit=10";
+      animals + "&api_key=1viBFeiW20s1k3US55DWfQVWwuwkX1Du&limit=10";
 
 
     console.log("here" + queryURL);
 
-    if (person != null) {
+    if (animals != null) {
       $.ajax({
           url: queryURL,
           method: "GET"
@@ -126,16 +126,16 @@ $(document).ready(function () {
 
             var p = $("<p>").text("Rating: " + rating);
 
-            var personImage = $("<img>");
-            personImage.attr("src", results[i].images.fixed_height.url);
-            personImage.attr("data-still", results[i].images.fixed_height_still.url);
-            personImage.attr("data-animate", results[i].images.fixed_height.url);
+            var animalsImage = $("<img>");
+            animalsImage.attr("src", results[i].images.fixed_height.url);
+            animalsImage.attr("data-still", results[i].images.fixed_height_still.url);
+            animalsImage.attr("data-animate", results[i].images.fixed_height.url);
 
             gifDiv.prepend(p);
-            gifDiv.prepend(personImage);
+            gifDiv.prepend(animalsImage);
 
             $("#gifs-appear-here").prepend(gifDiv);
-            person = " ";
+            animals = " ";
           }
         });
 
